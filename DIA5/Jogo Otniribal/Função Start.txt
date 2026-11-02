@@ -1,0 +1,24 @@
+import Foundation
+
+func iniciarJogo() {
+    print("Digite \"start\" para começar:")
+
+    // Lê a entrada do usuário
+    if var start = readLine() {
+        // Verifica se o usuário digitou exatamente "start"
+        if start.lowercased() == "start" {
+            print("Bem-vindo ao Mundo Viravira!")
+        } else {
+            while start.lowercased() != "start" {  // corrigi =! para !=
+                print("Você não digitou start")
+                if let line = readLine() {          // lê novamente dentro do loop
+                    start = line
+                }
+            }
+            print("Bem-vindo ao Mundo Viravira!")
+        }
+    }
+}
+
+// Chama a função
+iniciarJogo()

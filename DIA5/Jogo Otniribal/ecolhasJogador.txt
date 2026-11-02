@@ -1,0 +1,110 @@
+import Foundation
+
+// ======================
+// Função genérica para ler a escolha do jogador
+// ======================
+func lerEscolha(opcoes: [(String, String)]) -> String {
+    for (chave, descricao) in opcoes {
+        print("\(chave): \(descricao)")
+    }
+    
+    let chaves = opcoes.map { $0.0 }
+    
+    while true {
+        if let resposta = readLine()?.lowercased(), chaves.contains(resposta) {
+            return resposta
+        } else {
+            print("Escolha inválida. Tente novamente:")
+        }
+    }
+}
+
+// ======================
+// Funções de ação do jogador
+// ======================
+
+// Ação na sala Intro
+func acaoIntro() -> String {
+    let opcoes: [(String, String)] = [
+        ("a", "Concordar e ir com ela"),
+        ("b", "Perguntar como perdeu o mapa"),
+        ("c", "Não dizer nada")
+    ]
+    
+    let resposta = lerEscolha(opcoes: opcoes)
+    
+    switch resposta {
+    case "a":
+        print("Você concordou e foi com a princesa Mirabel.")
+    case "b":
+        print("O mapa foi engolido por uma Joaninha Gigante! Agora vamos!")
+    case "c":
+        print("Como princesa da Casa Belmora, você não tem outra opção se não ir com ela!")
+    default:
+        break
+    }
+    
+    return resposta
+}
+
+// Ação na sala do Sagui
+func acaoSagui() -> String {
+    let opcoes: [(String, String)] = [
+        ("a", "Falar algo em voz alta"),
+        ("b", "Sussurrar algo"),
+        ("c", "Perguntar à Mirabel o que ela acha")
+    ]
+    
+    let resposta = lerEscolha(opcoes: opcoes)
+    
+    switch resposta {
+    case "a":
+        print("O sagui imitou a sua frase exatamente!")
+    case "b":
+        print("Ele copiou até o seu sussurro, com a mesma intensidade.")
+    case "c":
+        print("O Grande Sagui imitou o que Mirabel acabou de te dizer.")
+    default:
+        break
+    }
+    
+    return resposta
+}
+
+// Escolha da porta na sala do Sagui
+func portaSagui() -> String {
+    let opcoes: [(String, String)] = [
+        ("a", "Porta do Silêncio"),
+        ("b", "Porta do Eco")
+    ]
+    
+    let resposta = lerEscolha(opcoes: opcoes)
+    
+    switch resposta {
+    case "a":
+        print("O sagui gigante imita um som estranho, e Mirabel comenta: \"Hmm… não parece a certa. Vamos tentar de novo.\"")
+    case "b":
+        print("O sagui gigante dá um sorriso, e Mirabel comenta: 'Acho que parece a certa, vamos tentar.'")
+    default:
+        break
+    }
+    
+    return resposta
+}
+
+// ======================
+// Main
+// ======================
+func main() {
+    print("=== O que você faz na sala Intro? ===")
+    let _ = acaoIntro()
+    
+    print("\n=== O que você faz na sala do Sagui? ===")
+    let _ = acaoSagui()
+    
+    print("\n=== Qual porta você escolhe? ===")
+    let _ = portaSagui()
+}
+
+// Rodar o jogo
+main()
